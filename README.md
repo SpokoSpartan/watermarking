@@ -39,7 +39,7 @@ Features that may be implemented:
 ## 3. Installation guide
 This section contains information needed to run application as a developer.
 #### Frontend app
-* install latest version of Node.js [on windows](https://phoenixnap.com/kb/install-node-js-npm-on-windows) or [on linux](https://nodejs.org/en/download/package-manager/).
+* install latest version of [Node.js](https://nodejs.org/en/download/package-manager/).
 * move to the watermark-client directory: ```cd watermark-client```
 * install latest version of Angular: ```npm install -g @angular/cli```
 * install project: ```npm install```
