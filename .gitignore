@@ -7,6 +7,9 @@
 # Only exists if Bazel was run
 /watermark-client/bazel-out
 
+# python cache
+watermark-algorithm/__pycache__
+
 # dependencies
 /watermark-client/node_modules
 
