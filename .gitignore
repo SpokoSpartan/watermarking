@@ -10,11 +10,14 @@
 # python cache
 watermark-algorithm/__pycache__
 
+/materials
+
 # dependencies
 /watermark-client/node_modules
 
 # IDEs and editors
 /.idea
+*/.idea
 .project
 .classpath
 .c9/

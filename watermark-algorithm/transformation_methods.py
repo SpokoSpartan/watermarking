@@ -1,51 +1,43 @@
 import cv2
 import numpy as np
-import random
 
 
 def count_image_dct(image):
     return cv2.dct(image)
 
 
+def inverse_dct_to_image(dtc_image):
+    return cv2.idct(dtc_image)
+
+
 def copy_image(image):
     return np.copy(image)
 
 
-def add_watermark(image_for_watermarking, strength):
-    random.seed(2)
-
-    appearing_pixels = __find_all_appearing_pixels(image_for_watermarking)
-    for rounds_iterator in range(0, 500):
-        add_watermark_in_round(image_for_watermarking, appearing_pixels, strength, rounds_iterator)
-
-    return image_for_watermarking
+def resize_image(image, shape):
+    return cv2.resize(image, shape)
 
 
-def add_watermark_in_round(image_for_watermarking, appearing_pixels, strength, rounds_iterator):
-    height, width = image_for_watermarking.shape
-    random_value = random.random()
-
-    for width_iterator in range(0, width):
-        for height_iterator in range(0, height):
-            pixel = image_for_watermarking[height_iterator][width_iterator]
-            if pixel == appearing_pixels[rounds_iterator]:
-                pixel = pixel + strength * random_value * pixel
-                image_for_watermarking[height_iterator][width_iterator] = pixel
-                return
+# to be sure we can divide it to blocks
+def standardize_image_to_blocks(image, block_size):
+    shape = ((image.shape[1] // block_size) * block_size, (image.shape[0] // block_size) * block_size)
+    return cv2.resize(image, shape)
 
 
-def __find_all_appearing_pixels(image_to_analyze):
-    height, width = image_to_analyze.shape
-    appearing_pixels = []
-    for width_iterator in range(0, width):
-        for height_iterator in range(0, height):
-            appearing_pixels.append(image_to_analyze[height_iterator][width_iterator])
-    appearing_pixels.sort()
-    return appearing_pixels
+def get_sub_image(image, block, start_height, start_width):
+    return image[start_height * block: (start_height + 1) * block, start_width * block: (start_width + 1) * block]
 
 
-def inverse_dct_to_image(dtc_image):
-    return cv2.idct(dtc_image)
+def assign_block_to_image(image, block, start_height, start_width, data):
+    image[start_height * block: (start_height + 1) * block, start_width * block: (start_width + 1) * block] = data
+
+
+def prepare_binary_image(image):
+    return np.round(image / 255)
+
+
+def get_matrix_of_zeros(shape):
+    return np.zeros(shape)
 
 
 def merge_rgb_image(red_layer, green_layer, blue_layer):
