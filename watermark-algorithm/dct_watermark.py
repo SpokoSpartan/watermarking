@@ -10,11 +10,11 @@ def add_watermark_to_image(rgb_image, watermark):
     green_image = rgb_image[:, :, 1]
     blue_image = rgb_image[:, :, 2]
 
-    # red_watermarked_image = add_watermark_to_one_image_layer(red_image, watermark)
+    red_watermarked_image = add_watermark_to_one_image_layer(red_image, watermark)
     green_watermarked_image = add_watermark_to_one_image_layer(green_image, watermark)
-    # blue_watermarked_image = add_watermark_to_one_image_layer(blue_image, watermark)
+    blue_watermarked_image = add_watermark_to_one_image_layer(blue_image, watermark)
 
-    return merge_rgb_image(red_image, green_watermarked_image, blue_image)
+    return merge_rgb_image(red_watermarked_image, green_watermarked_image, blue_watermarked_image)
 
 
 def add_watermark_to_one_image_layer(colored_image, watermark):
@@ -22,6 +22,10 @@ def add_watermark_to_one_image_layer(colored_image, watermark):
     watermark_shape = get_shape_divided_by(colored_image.shape, block_size)
     watermark_shape = reverse_shape(watermark_shape)
     watermark = resize_image(watermark, watermark_shape)
+
+    colored_image2 = colored_image.astype('float32')
+    dct_of_image = count_image_dct(colored_image2)
+    print_plot("DCT", dct_of_image)
 
     watermark = prepare_binary_image(watermark)
 

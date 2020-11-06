@@ -49,3 +49,7 @@ def merge_rgb_image(red_layer, green_layer, blue_layer):
             watermarked_image[height_iterator1, width_iterator1, 1] = green_layer[height_iterator1, width_iterator1]
             watermarked_image[height_iterator1, width_iterator1, 2] = blue_layer[height_iterator1, width_iterator1]
     return watermarked_image
+
+
+def to_array(vector):
+    return np.array(vector)
