@@ -49,7 +49,7 @@ This section contains information needed to run application as a developer.
 * install [Python3](https://www.python.org/downloads/)
 * install [numpy](https://numpy.org/install/), [opencv](https://pypi.org/project/opencv-python/)
 * move to the watermark-algorithm directory: ```cd watermark-algorithm```
-* run application: ```python3 dct_watermark.py```  and wait a little
+* run application: ```python3 main.py```  and wait a little
 
 ## 4. Project members
 * Piotr Kowalski
