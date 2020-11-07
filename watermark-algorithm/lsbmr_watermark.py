@@ -1,4 +1,4 @@
-from global_methods import read_grey_image
+from global_methods import read_grey_image, find_shape_similarities, print_plot
 from transformation_methods import resize_image, prepare_binary_image, copy_image, to_array
 
 channel = 2
@@ -58,4 +58,6 @@ def embed(image):
 
 def is_watermarked(watermarked_image):
     extracted_watermark = __extract(watermarked_image)
-    return 1
+    watermark = read_grey_image("images/watermark.png")
+    similarity = find_shape_similarities(extracted_watermark, watermark)
+    return similarity[0, 0] > 0.95

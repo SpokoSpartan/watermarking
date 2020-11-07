@@ -1,4 +1,7 @@
 import cv2
+import numpy as np
+
+from transformation_methods import resize_image
 
 PRINT_PLOTS = 1
 
@@ -36,3 +39,9 @@ def get_shape_divided_by(shape, divider):
 
 def reverse_shape(shape):
     return shape[1], shape[0]
+
+
+def find_shape_similarities(watermark1, watermark2):
+    watermark_height, watermark_width = watermark1.shape
+    watermark2 = resize_image(watermark2, (watermark_width, watermark_height))
+    return cv2.matchTemplate(watermark1.astype(np.float32), watermark2.astype(np.float32), cv2.TM_CCOEFF_NORMED)
