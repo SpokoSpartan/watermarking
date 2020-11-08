@@ -52,8 +52,8 @@ This section contains information needed to run application as a developer.
 * run application: ```python3 main.py```  and wait a little
 
 ### Backend app
-* install [JDK] version 11 or higher (https://jdk.java.net/archive/)
-* install [Maven] (https://www.javahelps.com/2017/10/install-apache-maven-on-linux.html)
+* install [JDK](https://jdk.java.net/archive/) version 11 or higher
+* install [Maven](https://www.javahelps.com/2017/10/install-apache-maven-on-linux.html)
 * move to the watermark-api directory: ```cd watermark-api```
 * compile application: ```mvn clean install```
 * run app: ```java -jar target/watermark-api-0.0.1-SNAPSHOT.jar```
