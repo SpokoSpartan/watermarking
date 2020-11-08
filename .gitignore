@@ -18,6 +18,7 @@ watermark-algorithm/__pycache__
 # IDEs and editors
 /.idea
 */.idea
+*/*iml
 .project
 .classpath
 .c9/
