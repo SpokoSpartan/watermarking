@@ -52,7 +52,7 @@ This section contains information needed to run application as a developer.
 * run application: ```python3 main.py```  and wait a little
 
 ### Backend app
-* install [JDK] (https://jdk.java.net/archive/)
+* install [JDK] version 11 or higher (https://jdk.java.net/archive/)
 * install [Maven] (https://www.javahelps.com/2017/10/install-apache-maven-on-linux.html)
 * move to the watermark-algorithm directory: ```cd watermark-api```
 * run application: ```mvn compile``` 
