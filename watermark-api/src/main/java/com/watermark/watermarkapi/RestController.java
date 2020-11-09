@@ -16,5 +16,11 @@ public class RestController {
         return "Url: " + url + "Algorithm: " + algorithmType;
     }
 
-
+    @RequestMapping(value={"/algorithm"}, method= RequestMethod.GET,  produces = {"application/json"})
+    public @ResponseBody
+    String getWatermark(@RequestParam String url, @RequestParam String algorithmType)
+    {
+        return "Url: " + url + "Algorithm: " + algorithmType;
+    }
+    
 }
