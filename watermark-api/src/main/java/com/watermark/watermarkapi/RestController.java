@@ -22,5 +22,5 @@ public class RestController {
     {
         return "Url: " + url + "Algorithm: " + algorithmType;
     }
-    
+
 }
