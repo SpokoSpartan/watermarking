@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @Autowired
-    ImageRepository repository;
+
+    public HelloController(ImageRepository repository) {
+        this.repository = repository;
+    }
+
+    private final ImageRepository repository;
 
     @GetMapping("/test")
     public String findall() {
