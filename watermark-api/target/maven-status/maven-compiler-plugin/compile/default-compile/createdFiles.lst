@@ -1,0 +1,12 @@
+com/watermark/watermarkapi/controllers/ImageController.class
+com/watermark/watermarkapi/entities/Picture.class
+com/watermark/watermarkapi/repositories/PictureRepository.class
+com/watermark/watermarkapi/WatermarkApiApplication.class
+com/watermark/watermarkapi/exceptions/ValidationException.class
+com/watermark/watermarkapi/controllers/HelloController.class
+com/watermark/watermarkapi/exceptions/ExceptionsHandler.class
+com/watermark/watermarkapi/exceptions/ApiError.class
+com/watermark/watermarkapi/services/ImageService.class
+com/watermark/watermarkapi/entities/User.class
+com/watermark/watermarkapi/config/SpringFoxConfig.class
+com/watermark/watermarkapi/config/CorsConfig.class

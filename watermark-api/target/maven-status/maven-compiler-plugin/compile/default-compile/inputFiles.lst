@@ -1,0 +1,12 @@
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/controllers/ImageController.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/repositories/PictureRepository.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/WatermarkApiApplication.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/entities/Picture.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/exceptions/ValidationException.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/services/ImageService.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/exceptions/ApiError.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/entities/User.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/config/CorsConfig.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/config/SpringFoxConfig.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/exceptions/ExceptionsHandler.java
+/home/wojtek/Study/MMCV/watermark-api/src/main/java/com/watermark/watermarkapi/controllers/HelloController.java

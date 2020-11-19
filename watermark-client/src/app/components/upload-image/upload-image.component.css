@@ -1,0 +1,23 @@
+.drop-image-wrapper {
+  margin-top: 3%;
+}
+
+ngx-file-drop {
+  width: 40%;
+}
+
+#upload-image {
+  flex-direction: column;
+  font-size: 22px;
+}
+
+#upload-image h2 {
+  font-size: 22px;
+}
+
+#open-image {
+  flex-direction: row;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
+}
