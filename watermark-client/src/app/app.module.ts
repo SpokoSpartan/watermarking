@@ -19,11 +19,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /* Angular Flex */
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+/* Angular Flex */
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+
+/* Drop File*/
+import {NgxFileDropModule} from 'ngx-file-drop';
+
+/* Http Client*/
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
+    UploadImageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +42,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularMaterialModule,
+    NgxFileDropModule,
+    HttpClientModule,
     AngularMaterialModule
   ],
   providers: [],

@@ -2,6 +2,7 @@ package com.watermark.watermarkapi.services;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.watermark.watermarkapi.domains.ImageUrl;
 import com.watermark.watermarkapi.exceptions.ValidationException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -29,23 +30,22 @@ public class ImageService {
 	@Value("${cloudinary.max-file-size}")
 	private long maxFileSize;
 
-	// Return image url
-	public String uploadImage(MultipartFile image) {
+	public ImageUrl uploadImage(MultipartFile image) {
 		validateFile(image);
 		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
 				"cloud_name", cloudName,
 				"api_key", apiKey,
 				"api_secret", apiSecret));
-		Map<?,?> res = uploadToCloud(image, cloudinary);
-		return (String) res.get("url");
+		Map<?, ?> res = uploadToCloud(image, cloudinary);
+		return new ImageUrl((String) res.get("url"), (String) res.get("secure_url"));
 	}
 
 	private void validateFile(MultipartFile file) {
-		if(file == null || file.isEmpty()){
+		if (file == null || file.isEmpty()) {
 			throw new ValidationException("File is empty.");
 		}
 
-		if(file.getSize() > maxFileSize) {
+		if (file.getSize() > maxFileSize) {
 			DecimalFormat decimalFormat = new DecimalFormat("###.#");
 			throw new ValidationException("File size cannot exceed " +
 					decimalFormat.format(maxFileSize / 1000000.0) + " MB.");
@@ -55,7 +55,7 @@ public class ImageService {
 			throw new ValidationException("File type not supported.");
 	}
 
-	private Map<?,?> uploadToCloud(MultipartFile image, Cloudinary cloudinary) {
+	private Map<?, ?> uploadToCloud(MultipartFile image, Cloudinary cloudinary) {
 		try {
 			return cloudinary.uploader().upload(getImageAsBytes(image),
 					ObjectUtils.asMap("resource_type", "auto"));
