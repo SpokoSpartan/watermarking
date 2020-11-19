@@ -1,18 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-<<<<<<< Updated upstream
 import { AppComponent } from './app.component';
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-=======
+/* Routing */
+import { AppRoutingModule } from './app-routing.module';
 
 /* Angular Material */
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -28,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Angular Flex */
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+/* Angular Flex */
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 
 /* Drop File*/
@@ -52,9 +44,11 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     AngularMaterialModule,
     NgxFileDropModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularMaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

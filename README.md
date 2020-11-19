@@ -54,9 +54,11 @@ This section contains information needed to run application as a developer.
 ### Backend app
 * install [JDK](https://jdk.java.net/archive/) version 11 or higher
 * install [Maven](https://www.javahelps.com/2017/10/install-apache-maven-on-linux.html)
+* run the database: ```docker run --name postgres-mmvc -p 5432:5432 -e POSTGRES_PASSWORD=Multimedia2020! -e POSTGRES_DB=spring-test -d postgres```
 * move to the watermark-api directory: ```cd watermark-api```
 * compile application: ```mvn clean install```
 * run app: ```java -jar target/watermark-api-0.0.1-SNAPSHOT.jar```
+* open your browser on address: ```http://localhost:8080/```
 
 ## 4. Project members
 * Piotr Kowalski

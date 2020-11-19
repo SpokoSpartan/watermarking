@@ -12,6 +12,8 @@ watermark-algorithm/__pycache__
 
 /materials
 
+/watermark-api/target
+
 # dependencies
 /watermark-client/node_modules
 
