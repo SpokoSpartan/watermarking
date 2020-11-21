@@ -1,4 +1,4 @@
-package com.watermark.watermarkapi.config;
+package com.watermark.watermarkapi.config.security;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;

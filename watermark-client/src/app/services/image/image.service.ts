@@ -17,7 +17,7 @@ export class ImageService {
   public uploadImage(image: File): Observable<ImageUrl> {
     const uploadData = new FormData();
     uploadData.append('image', image);
-    return this.http.post<ImageUrl>(this.imageUrl + 'upload', uploadData);
+    return this.http.post<ImageUrl>(this.imageUrl + 'upload', uploadData, {withCredentials: true});
   }
 
 }

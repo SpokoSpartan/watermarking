@@ -1,37 +1,35 @@
-package com.watermark.watermarkapi.config;
+package com.watermark.watermarkapi.config.security;
 
 import com.watermark.watermarkapi.services.UserService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final UserService userService;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
-	private final LogoutSuccessHandler logoutSuccessHandler;
-	private final AuthenticationSuccessHandler customAuthenticationSuccessHandler;
-	private final AuthenticationFailureHandler customAuthenticationFailureHandler;
+	private final CustomLogoutSuccessHandler logoutSuccessHandler;
+	private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+	private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+	private final CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
 
 	public SecurityConfig(UserService userService,
-			BCryptPasswordEncoder bCryptPasswordEncoder,
-			LogoutSuccessHandler logoutSuccessHandler,
-			AuthenticationSuccessHandler customAuthenticationSuccessHandler,
-			AuthenticationFailureHandler customAuthenticationFailureHandler) {
+						  BCryptPasswordEncoder bCryptPasswordEncoder,
+						  CustomLogoutSuccessHandler logoutSuccessHandler,
+						  RestAuthenticationEntryPoint restAuthenticationEntryPoint,
+						  CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler,
+						  CustomAuthenticationFailureHandler customAuthenticationFailureHandler) {
 		this.userService = userService;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 		this.logoutSuccessHandler = logoutSuccessHandler;
+		this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
 		this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
 		this.customAuthenticationFailureHandler = customAuthenticationFailureHandler;
 	}
@@ -44,17 +42,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic()
+				.and().exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
 				.and().cors()
 				.and().csrf().disable()
 				.authorizeRequests()
-				.antMatchers("/error**", "/", "/login**").permitAll()
+				.antMatchers("/error*", "/", "/login*").permitAll()
+				.anyRequest().authenticated()
 				.and().formLogin()
 				.failureHandler(customAuthenticationFailureHandler)
 				.successHandler(customAuthenticationSuccessHandler)
 				.and().logout()
-				.logoutSuccessHandler(logoutSuccessHandler)
 				.deleteCookies("JSESSIONID")
-				.invalidateHttpSession(true);
+				.invalidateHttpSession(true)
+				.logoutSuccessHandler(logoutSuccessHandler);
 	}
 
 }

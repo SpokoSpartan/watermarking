@@ -1,4 +1,4 @@
-package com.watermark.watermarkapi.config;
+package com.watermark.watermarkapi.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

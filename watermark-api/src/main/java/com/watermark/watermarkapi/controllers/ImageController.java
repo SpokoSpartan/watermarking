@@ -19,7 +19,6 @@ public class ImageController {
 		this.imageService = imageService;
 	}
 
-	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/upload")
 	public ImageUrl uploadImage(@RequestParam("image") MultipartFile image) {
 		return imageService.uploadImage(image);
