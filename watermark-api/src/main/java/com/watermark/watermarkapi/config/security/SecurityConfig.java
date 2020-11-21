@@ -46,7 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().cors()
 				.and().csrf().disable()
 				.authorizeRequests()
-				.antMatchers("/error*", "/", "/login*").permitAll()
+				.antMatchers("/error*", "/", "/login*", "/swagger-ui.html", "/csrf",
+						"/webjars/springfox-swagger-ui/**", "/swagger-resources/**", "/v2/api-docs**").permitAll()
 				.anyRequest().authenticated()
 				.and().formLogin()
 				.failureHandler(customAuthenticationFailureHandler)
