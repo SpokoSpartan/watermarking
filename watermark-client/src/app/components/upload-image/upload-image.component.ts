@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FileSystemFileEntry, NgxFileDropEntry} from 'ngx-file-drop';
 import {ImageService} from '../../services/image/image.service';
-import {ImageUrl} from '../../domains/ImageUrl';
 
 @Component({
   selector: 'app-upload-image',
