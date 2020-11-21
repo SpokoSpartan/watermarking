@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FileSystemFileEntry, NgxFileDropEntry} from 'ngx-file-drop';
 import {ImageService} from '../../services/image/image.service';
+import {ImageUrl} from '../../domains/ImageUrl';
 
 @Component({
   selector: 'app-upload-image',
@@ -8,6 +9,11 @@ import {ImageService} from '../../services/image/image.service';
   styleUrls: ['./upload-image.component.css']
 })
 export class UploadImageComponent implements OnInit {
+
+  choseAlgorithm: string;
+  imageUrl: string = sessionStorage.getItem('imageUrl');
+  algorithms: string[] = ['DCT', 'LSBMR'];
+  watermarkData: object;
 
   constructor(private imageService: ImageService) {
   }
@@ -28,7 +34,11 @@ export class UploadImageComponent implements OnInit {
           }
 
           this.imageService.uploadImage(file).subscribe(
-            (imageUrl) => console.log(imageUrl),
+            (imageUrl) => {
+              console.log(imageUrl);
+              sessionStorage.setItem('imageUrl', imageUrl.url);
+              this.imageUrl = sessionStorage.getItem('imageUrl');
+              },
             (error) => console.log(error)
           );
         });
@@ -36,4 +46,20 @@ export class UploadImageComponent implements OnInit {
     }
   }
 
+  public watermarkImage(): void {
+    this.watermarkData = {
+      algorithm: this.choseAlgorithm,
+      imageUrl: this.imageUrl,
+    };
+    this.imageService.watermarkImage(this.watermarkData).subscribe(
+      (watermarkImageUrl) => {
+        console.log(watermarkImageUrl);
+      },
+      (error) => console.log(error)
+    );
+    this.imageService.watermarkImage(this.watermarkData);
+    sessionStorage.removeItem('imageUrl');
+    this.choseAlgorithm = null;
+    this.imageUrl = null;
+  }
 }

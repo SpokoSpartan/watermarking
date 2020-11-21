@@ -1,6 +1,7 @@
 package com.watermark.watermarkapi.controllers;
 
 import com.watermark.watermarkapi.domains.ImageUrl;
+import com.watermark.watermarkapi.domains.WatermarkUrl;
 import com.watermark.watermarkapi.services.ImageService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,12 @@ public class ImageController {
 	@PostMapping("/upload")
 	public ImageUrl uploadImage(@RequestParam("image") MultipartFile image) {
 		return imageService.uploadImage(image);
+	}
+
+	@PostMapping("/watermark")
+	public WatermarkUrl watermarkImage(@RequestParam("algorithm") String algorithm,
+								@RequestParam("imageUrl") String imageUrl) {
+		return new WatermarkUrl(imageUrl, algorithm);
 	}
 
 }
