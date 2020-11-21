@@ -21,3 +21,18 @@ ngx-file-drop {
   margin-right: 15%;
   width: 70%;
 }
+
+.pick-algorithm-wrapper {
+  margin-top: 3%;
+}
+
+.pick-algorithm-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.pick-algorithm-radio-button {
+  margin: 5px;
+
+}

@@ -6,4 +6,8 @@ export class ImageUrl {
     this.url = url;
     this.secureUrl = secureUrl;
   }
+
+  public getUrl(): string {
+    return this.url;
+  }
 }
