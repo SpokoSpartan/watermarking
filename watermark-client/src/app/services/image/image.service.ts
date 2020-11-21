@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {apiUrl} from '../../config';
 import {Observable} from 'rxjs';
-import {ImageUrl} from "../../domains/ImageUrl";
+import {ImageUrl} from '../../domains/ImageUrl';
+import {WatermarkUrl} from '../../domains/WatermarkUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +21,14 @@ export class ImageService {
     return this.http.post<ImageUrl>(this.imageUrl + 'upload', uploadData);
   }
 
+  public watermarkImage(data: any): Observable<WatermarkUrl> {
+    const watermarkData = new FormData();
+    if (data.hasOwnProperty('algorithm')) {
+      watermarkData.append('algorithm', data.algorithm);
+    }
+    if (data.hasOwnProperty('imageUrl')) {
+      watermarkData.append('imageUrl', data.imageUrl);
+    }
+    return this.http.post<WatermarkUrl>(this.imageUrl + 'watermark', watermarkData);
+  }
 }
