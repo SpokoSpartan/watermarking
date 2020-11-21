@@ -1,11 +1,11 @@
-<div class="drop-image-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div class="drop-image-wrapper" fxLayout="row" fxLayoutAlign="center center" *ngIf="!fileUploaded">
   <ngx-file-drop dropZoneLabel="Drop your image here" (onFileDrop)="dropped($event)">
     <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
       <div id="upload-image">
         <h2>Drop your image here</h2>
         <div id="open-image">
           or
-          <button mat-stroked-button color="accent"
+          <button mat-stroked-button color="accent" [disabled]="uploadingInProgress"
                   type="button" (click)="openFileSelector()">Browse Files
           </button>
         </div>
@@ -13,6 +13,11 @@
     </ng-template>
   </ngx-file-drop>
 </div>
+
+<div *ngIf="fileUploaded && imageUrl !== null" id="upload-image-wrapper">
+  <img src="{{imageUrl.url}}" id="uploaded-image">
+</div>
+
 <div class="pick-algorithm-wrapper" fxLayout="column" fxLayoutAlign="center center">
   <h3 id="pick-algorithm-label">Choose algorithm to watermark image</h3>
   <mat-radio-group

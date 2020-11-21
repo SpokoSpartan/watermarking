@@ -29,6 +29,6 @@ export class ImageService {
     if (data.hasOwnProperty('imageUrl')) {
       watermarkData.append('imageUrl', data.imageUrl);
     }
-    return this.http.post<WatermarkUrl>(this.imageUrl + 'watermark', watermarkData);
+    return this.http.post<WatermarkUrl>(this.imageUrl + 'watermark', watermarkData, {withCredentials: true});
   }
 }
