@@ -1,0 +1,32 @@
+<div class="drop-image-wrapper" fxLayout="row" fxLayoutAlign="center center" *ngIf="!fileUploaded">
+  <ngx-file-drop dropZoneLabel="Drop your image here" (onFileDrop)="dropped($event)">
+    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+      <div id="upload-image">
+        <h2>Drop your image here</h2>
+        <div id="open-image">
+          or
+          <button mat-stroked-button color="accent" [disabled]="uploadingInProgress"
+                  type="button" (click)="openFileSelector()">Browse Files
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </ngx-file-drop>
+</div>
+
+<div *ngIf="fileUploaded && imageUrl !== null" id="upload-image-wrapper">
+  <img src="{{imageUrl.url}}" id="uploaded-image">
+</div>
+
+<div class="pick-algorithm-wrapper" fxLayout="column" fxLayoutAlign="center center">
+  <h3 id="pick-algorithm-label">Choose algorithm to watermark image</h3>
+  <mat-radio-group
+    aria-labelledby="pick-algorithm-label"
+    class="pick-algorithm-radio-group"
+    [(ngModel)]="choseAlgorithm">
+    <mat-radio-button class="pick-algorithm-radio-button" *ngFor="let algorithm of algorithms" [value]="algorithm">
+      {{algorithm}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <button mat-raised-button color="primary" [disabled]="(choseAlgorithm==null || imageUrl==null)" (click)="watermarkImage()">Watermark</button>
+</div>
