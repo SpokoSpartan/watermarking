@@ -5,4 +5,46 @@
     width: 50%;
   }
 
+.flex-parent {
+    display: flex;
+  }
   
+.jc-center {
+    justify-content: center;
+  }
+
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 4px;
+  }
+
+.success {color: green;}
+.info {color: dodgerblue;}
+.warning {color: orange;}
+.danger {color: red;}
+.default {color: black;}
+.btn:hover {background: #eee;}
+
+
+.fixed {
+    position: relative;
+    top: 30px;
+    left: 36%;
+    width: 300px;
+  }
+
+.body {
+    margin: 80;
+  }
+
+.img-container {
+    text-align: center;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+  }

@@ -1,39 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" class="center">
-    <style>
-      .img-container {
-        text-align: center;
-        display: block;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-    </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" class="center">
 </head>
 
 <body>
-<div>
-    
-    <button type="button" (click)="getImageFromService()">Show Images</button>
-</div>
+  <div class="flex-parent jc-center fixed">
+    <button class="btn info" type="button" (click)="getImageFromService()">Show Images</button>
+  </div>
 
+  <div class="uploadedImage">
+    <h2 style="color:brown;" style="text-align:center;"><br><br>Uploaded Image</h2>
+    <img id="myImg" [src]="imgUrl" alt="Uploaded Image" style="width:100%;max-width:300px"
+      style="border:1px solid black;" class="center">
+  </div>
 
-<div class="uploadedImage">
-    <h2 style="color:brown;" style="text-align:center;" >Uploaded Image</h2>
-        <img id="myImg" [src]="imgUrl"
-        alt="Uploaded Image"
-        style="width:100%;max-width:300px" 
-        style="border:1px solid black;"
-        class="center">
-</div>
-
-<div>
-    <h2 style="color:brown;" style="text-align:center;">Watermarked Image</h2>
-    <img id="myWatermakedImg" [src]="imgUrl" alt="Watermarked Image"
-    style="width:100%;max-width:300px" 
-    style="border:1px solid black;"
-    class="center">
-
-</div>
+  <div>
+    <h2 style="color:brown;" style="text-align:center;"><br> Watermarked Image</h2>
+    <img id="myWatermakedImg" [src]="imgUrl" alt="Watermarked Image" style="width:100%;max-width:300px"
+      style="border:1px solid black;" class="center">
+  </div>
 
 </body>

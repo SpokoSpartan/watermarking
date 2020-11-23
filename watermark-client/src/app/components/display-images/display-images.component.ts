@@ -18,11 +18,8 @@ export class DisplayImagesComponent implements OnInit {
   imgUrl: string = 'https://picsum.photos/200/300/?random';
   watermarkedImgUrl: string =  'https://picsum.photos/200/300/?random';
 
-
   constructor(private imageShowService: ImageShowService) {
-    //this.imageToShow ='https://ibb.co/FbKW0cj'
-    //this.imgUrl = 'https://ibb.co/FbKW0cj'
-    //this.watermarkedImgUrl = 'https://ibb.co/4M3K15Y'
+   // this.getImageFromService();
   }
 
   ngOnInit(): void {
