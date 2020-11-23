@@ -18,7 +18,7 @@ export class ImageService {
   public uploadImage(image: File): Observable<ImageUrl> {
     const uploadData = new FormData();
     uploadData.append('image', image);
-    return this.http.post<ImageUrl>(this.imageUrl + 'upload', uploadData);
+    return this.http.post<ImageUrl>(this.imageUrl + 'upload', uploadData, {withCredentials: true});
   }
 
   public watermarkImage(data: any): Observable<WatermarkUrl> {
@@ -29,6 +29,6 @@ export class ImageService {
     if (data.hasOwnProperty('imageUrl')) {
       watermarkData.append('imageUrl', data.imageUrl);
     }
-    return this.http.post<WatermarkUrl>(this.imageUrl + 'watermark', watermarkData);
+    return this.http.post<WatermarkUrl>(this.imageUrl + 'watermark', watermarkData, {withCredentials: true});
   }
 }

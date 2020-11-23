@@ -1,18 +1,27 @@
 <div class="account-wrapper" fxLayout="row" fxLayoutAlign="center center">
 
   <mat-card class="box">
-
-    <form class="login-form">
+    <div id="failed-login-info" *ngIf="loginFailed">
+      Bad credentials
+    </div>
+    <form class="login-form" (ngSubmit)="login()" [formGroup]="loginParams">
       <mat-card-content>
         <mat-form-field class="input-full-width">
-          <input matInput placeholder="Username">
+          <input matInput formControlName="email" placeholder="Email">
+          <mat-error *ngIf="loginParams.controls['email'].hasError">
+            Email is not valid!
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input-full-width">
-          <input matInput placeholder="Password">
+          <input matInput type="password" formControlName="password" placeholder="Password">
+          <mat-error *ngIf="loginParams.controls['email'].hasError">
+            Password is required!
+          </mat-error>
         </mat-form-field>
       </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block">Log in</button>
+      <button mat-stroked-button color="accent" class="btn-block" type="submit"
+              [disabled]="!loginParams.valid">Log in</button>
     </form>
   </mat-card>
 

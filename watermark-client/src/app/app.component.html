@@ -1,11 +1,11 @@
 <mat-toolbar color="primary" class="app-header">
-<!--  <div><a href="https://www.positronx.io" target="_blank" class="positronx">PositronX.io</a></div>-->
   <div>Watermarking Application</div>
   <span class="navbar-spacer"></span>
   <span class="nav-tool-items">
-    <a mat-button routerLink="upload" routerLinkActive="active">Upload</a>
-    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
-    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+    <a mat-button routerLink="watermark" routerLinkActive="active" *ngIf="isLoggedIn">Watermark</a>
+    <a mat-button routerLink="login" routerLinkActive="active" *ngIf="!isLoggedIn">Log in</a>
+    <a mat-button mat-raised-button *ngIf="isLoggedIn" (click)="logout()">Log out</a>
+    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active" *ngIf="!isLoggedIn">Register</a>
   </span>
 </mat-toolbar>
 <router-outlet></router-outlet>

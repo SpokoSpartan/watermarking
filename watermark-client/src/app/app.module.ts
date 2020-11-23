@@ -45,7 +45,7 @@ import {HttpClientModule} from '@angular/common/http';
     AngularMaterialModule,
     NgxFileDropModule,
     HttpClientModule,
-    AngularMaterialModule
+    AngularMaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
