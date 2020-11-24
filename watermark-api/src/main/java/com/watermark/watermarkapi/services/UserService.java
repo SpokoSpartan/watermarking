@@ -2,6 +2,7 @@ package com.watermark.watermarkapi.services;
 
 import com.watermark.watermarkapi.entities.User;
 import com.watermark.watermarkapi.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,4 +31,18 @@ public class UserService implements UserDetailsService {
 		throw new UsernameNotFoundException("User not found.");
 	}
 
+	public User getLoggedInUser() throws UsernameNotFoundException{
+
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if(principal instanceof org.springframework.security.core.userdetails.User) {
+			org.springframework.security.core.userdetails.User user=
+					((org.springframework.security.core.userdetails.User) principal);
+			Optional<User> userOptional = userRepository.findByEmail(user.getUsername());
+			if (userOptional.isPresent()) {
+				return userOptional.get();
+			}
+		}
+		throw new UsernameNotFoundException("User not found.");
+	}
 }
