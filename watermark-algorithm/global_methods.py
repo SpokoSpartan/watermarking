@@ -3,7 +3,7 @@ import numpy as np
 
 from transformation_methods import resize_image
 
-PRINT_PLOTS = 1
+TESTING_ALGORITHM = 0
 
 
 def read_image(name):
@@ -14,18 +14,23 @@ def read_grey_image(name):
     return cv2.imread(name, 0)
 
 
+def to_binary_array(image, extension):
+    success, encoded_image = cv2.imencode(ext=extension, img=image)
+    return encoded_image.tobytes()
+
+
 def prepare_window():
-    if PRINT_PLOTS:
+    if TESTING_ALGORITHM:
         cv2.namedWindow("Watermarking", cv2.WINDOW_AUTOSIZE)
 
 
 def print_plot(plot_name, data):
-    if PRINT_PLOTS:
+    if TESTING_ALGORITHM:
         cv2.imshow(plot_name, data)
 
 
 def wait_for_key():
-    if PRINT_PLOTS:
+    if TESTING_ALGORITHM:
         cv2.waitKey(0)
 
 

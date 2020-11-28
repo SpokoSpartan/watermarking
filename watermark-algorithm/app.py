@@ -1,33 +1,26 @@
-from tkinter import Image
-
 from flask import Flask, request, jsonify
-from global_methods import print_plot
-from main import _main
-from download_image import get_image
+from main import add_watermark
+from global_image import get_image, upload_image
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-#url = https://res.cloudinary.com/demo/image/upload/sample.jpg?fbclid=IwAR0mghGsRqq_Bh2Dk-BmSxuZIGiu1NHfvuvfgADbYBxTZjfO8woMkHnr_EM
 
 @app.route("/algorithm", methods=["POST"])
 def algorithm():
     alg = request.args.get("algorithm")
     url = request.args.get("url")
-    img = get_image(url)
-    print(img)
-    #print_plot("Image", img)
-    response = jsonify(url)
-    response.status_code = 202  # Provides a response status code of 202 which is "Accepted"
-    watermarked_image = _main(alg, img)
-
-    return response;
+    filename, image = get_image(url)
+    watermarked_image = add_watermark(alg, image)
+    image_url = upload_image(watermarked_image, filename)
+    response = jsonify(image_url)
+    response.status_code = 200  # Provides a response status code of 200 which is "Ok"
+    return response
 
 
 @app.errorhandler(404)
 def page_not_found(e):
     return "<h1>404</h1><p>The resource could not be found.</p>", 404
-
 
 
 if __name__ == "__main__":

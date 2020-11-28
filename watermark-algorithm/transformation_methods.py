@@ -36,6 +36,10 @@ def prepare_binary_image(image):
     return np.round(image / 255)
 
 
+def prepare_image_as_file(image):
+    return image * 255
+
+
 def get_matrix_of_zeros(shape):
     return np.zeros(shape)
 
