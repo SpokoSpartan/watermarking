@@ -49,7 +49,12 @@ This section contains information needed to run application as a developer.
 * install [Python3](https://www.python.org/downloads/)
 * install [numpy](https://numpy.org/install/), [opencv](https://pypi.org/project/opencv-python/)
 * move to the watermark-algorithm directory: ```cd watermark-algorithm```
-* run application: ```python3 main.py```  and wait a little
+* when testing:
+  * change TESTING_ALGORITHM to 1 (```global_methods.py```)
+  * run ```test.py```
+* when running http application:
+  * change TESTING_ALGORITHM to 0 (```global_methods.py```)
+  * run ```app.py```
 
 #### Backend app
 * install [JDK](https://jdk.java.net/archive/) version 11 or higher
