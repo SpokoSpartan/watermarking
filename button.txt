@@ -1,0 +1,3 @@
+<div class="flex-parent jc-center fixed">
+    <button class="btn info" type="button" (click)="getImageFromService()">Show Images</button>
+  </div>
