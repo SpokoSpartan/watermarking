@@ -4,12 +4,14 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import {AuthenticatedGuard} from './guards/authenticated.guard';
+import {CheckComponent} from './components/check/check.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'watermark', component: UploadImageComponent, canActivate: [AuthenticatedGuard]}
+  { path: 'watermark', component: UploadImageComponent, canActivate: [AuthenticatedGuard]},
+  { path: 'verify', component: CheckComponent, canActivate: [AuthenticatedGuard]}
 ];
 
 @NgModule({
