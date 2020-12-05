@@ -53,7 +53,7 @@ export class UploadImageComponent implements OnInit {
     public watermarkImage(): void {
         this.watermarkData = {
             algorithm: this.choseAlgorithm,
-            imageUrl: this.imageUrl,
+            imageId: this.imageUrl.pictureId
         };
         this.imageService.watermarkImage(this.watermarkData).subscribe(
             (watermarkImageUrl) => {
@@ -62,7 +62,6 @@ export class UploadImageComponent implements OnInit {
             },
             (error) => console.log(error),
             () => {
-                this.imageService.watermarkImage(this.watermarkData);
                 this.choseAlgorithm = null;
                 this.imageUrl = null;
             }

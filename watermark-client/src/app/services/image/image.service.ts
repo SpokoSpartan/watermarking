@@ -26,8 +26,8 @@ export class ImageService {
     if (data.hasOwnProperty('algorithm')) {
       watermarkData.append('algorithm', data.algorithm);
     }
-    if (data.hasOwnProperty('imageUrl')) {
-      watermarkData.append('imageUrl', data.imageUrl);
+    if (data.hasOwnProperty('imageId')) {
+      watermarkData.append('imageId', data.imageId);
     }
     return this.http.post<WatermarkUrl>(this.imageUrl + 'watermark', watermarkData, {withCredentials: true});
   }
