@@ -27,13 +27,15 @@ import {NgxFileDropModule} from 'ngx-file-drop';
 
 /* Http Client*/
 import {HttpClientModule} from '@angular/common/http';
+import { CheckComponent } from './components/check/check.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     RegisterComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    CheckComponent
   ],
   imports: [
     BrowserModule,

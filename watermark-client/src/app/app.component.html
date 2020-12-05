@@ -2,6 +2,7 @@
   <div>Watermarking Application</div>
   <span class="navbar-spacer"></span>
   <span class="nav-tool-items">
+    <a mat-button routerLink="verify" routerLinkActive="active" *ngIf="isLoggedIn">Verify</a>
     <a mat-button routerLink="watermark" routerLinkActive="active" *ngIf="isLoggedIn">Watermark</a>
     <a mat-button routerLink="login" routerLinkActive="active" *ngIf="!isLoggedIn">Log in</a>
     <a mat-button mat-raised-button *ngIf="isLoggedIn" (click)="logout()">Log out</a>

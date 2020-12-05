@@ -1,4 +1,14 @@
+
 from global_methods import prepare_window, print_plot, wait_for_key, TESTING_ALGORITHM
+
+
+def get_watermark_level(image):
+    from dct_watermark import watermark_level
+    wat_lev = watermark_level(image)
+    if wat_lev > 50:
+        return wat_lev
+    from lsbmr_watermark import watermark_level
+    return watermark_level(image)
 
 
 def add_watermark(watermark_method, image):

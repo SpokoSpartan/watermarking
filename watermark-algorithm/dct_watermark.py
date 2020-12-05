@@ -78,4 +78,11 @@ def is_watermarked(watermarked_image):
     extracted_watermark = __extract(watermarked_image)
     watermark = read_grey_image("images/watermark.png")
     similarity = find_shape_similarities(extracted_watermark, watermark)
-    return similarity[0, 0] > 0.95
+    return similarity[0, 0] > 0.90
+
+
+def watermark_level(watermarked_image):
+    extracted_watermark = __extract(watermarked_image)
+    watermark = read_grey_image("images/watermark.png")
+    similarity = find_shape_similarities(extracted_watermark, watermark)
+    return int(similarity[0, 0] * 100)

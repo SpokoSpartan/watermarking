@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from main import add_watermark
+from main import add_watermark, get_watermark_level
 from global_image import get_image, upload_image
 
 app = Flask(__name__)
@@ -16,6 +16,13 @@ def algorithm():
     response = jsonify(image_url)
     response.status_code = 200  # Provides a response status code of 200 which is "Ok"
     return response
+
+
+@app.route("/watermark-level", methods=["POST"])
+def watermark_level():
+    url = request.args.get("url")
+    filename, image = get_image(url)
+    return str(get_watermark_level(image))
 
 
 @app.errorhandler(404)

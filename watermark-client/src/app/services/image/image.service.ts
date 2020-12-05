@@ -11,6 +11,7 @@ import {WatermarkUrl} from '../../domains/WatermarkUrl';
 export class ImageService {
 
   private imageUrl = apiUrl + 'image/';
+  private analyzeUrl = apiUrl + 'analyze/';
 
   constructor(private http: HttpClient) {
   }
@@ -31,4 +32,9 @@ export class ImageService {
     }
     return this.http.post<WatermarkUrl>(this.imageUrl + 'watermark', watermarkData, {withCredentials: true});
   }
+
+  public verifyImage(url: string): Observable<number> {
+    return this.http.post<number>(this.analyzeUrl + 'watermark-level?imageUrl=' + url, null, {withCredentials: true});
+  }
+
 }
