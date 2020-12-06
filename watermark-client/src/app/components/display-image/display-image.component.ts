@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageShowService } from 'src/app/services/image-show/image-show.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 @Component({
@@ -16,16 +17,30 @@ export class DisplayImagesComponent implements OnInit {
 
   isImageLoading: boolean;
 
-  imgUrl: string = 'https://picsum.photos/200/300/?random';
-  watermarkedImgUrl: string =  'https://picsum.photos/200/300/?random';
+  // imgUrl: string = 'https://picsum.photos/200/300/?random';
+   imgUrl: string;
+   watermarkedImgUrl: string;
+ 
 
-  constructor(private imageShowService: ImageShowService) {
-   this.getImageFromService();
+  constructor(private imageShowService: ImageShowService,  private route: ActivatedRoute, private router: Router) {
+  
+   this.route.paramMap
+    .subscribe(params => {
+      this.imgUrl = params.get('imgUrl');
+      this.watermarkedImgUrl = params.get('watermarkImageUrl');
+      console.log(this.imgUrl);
+    }
+    
+  );
+
+  this.getImageFromService();
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+   // throw new Error('Method not implemented.');
   }
+
+
   
 createImageFromBlob(image: Blob) {
    let reader = new FileReader();

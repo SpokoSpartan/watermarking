@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FileSystemFileEntry, NgxFileDropEntry} from 'ngx-file-drop';
 import {ImageService} from '../../services/image/image.service';
 import {ImageUrl} from '../../domains/ImageUrl';
+import {ActivatedRoute, Router} from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-upload-image',
@@ -17,7 +20,10 @@ export class UploadImageComponent implements OnInit {
     algorithms: string[] = ['DCT', 'LSBMR'];
     watermarkData: object;
 
-    constructor(private imageService: ImageService) {
+    constructor(
+        private imageService: ImageService,
+        private route: ActivatedRoute, 
+        private router: Router) {
     }
 
     ngOnInit(): void {
@@ -51,14 +57,24 @@ export class UploadImageComponent implements OnInit {
     }
 
     public watermarkImage(): void {
+          
         this.watermarkData = {
             algorithm: this.choseAlgorithm,
             imageUrl: this.imageUrl,
         };
+
         this.imageService.watermarkImage(this.watermarkData).subscribe(
             (watermarkImageUrl) => {
+                const watermarkUrl = watermarkImageUrl.url;
                 console.log(watermarkImageUrl);
                 this.fileUploaded = false;
+                //console.log(this.imageUrl);
+                const imgUrl = this.imageUrl.url;
+
+                console.log("1" + imgUrl);
+                console.log("2" + watermarkUrl);
+                this.router.navigate(['/display', {imgUrl:this.imageUrl.url, watermarkImage: watermarkImageUrl.url }]);
+                //console.log("watermark" +  watermarkImageUrl.);
             },
             (error) => console.log(error),
             () => {
@@ -67,5 +83,7 @@ export class UploadImageComponent implements OnInit {
                 this.imageUrl = null;
             }
         );
+
+      
     }
 }

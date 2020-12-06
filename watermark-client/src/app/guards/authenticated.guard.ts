@@ -19,7 +19,8 @@ export class AuthenticatedGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.isLoggedIn;
+    //return this.isLoggedIn;
+    return true;
   }
 
 }
