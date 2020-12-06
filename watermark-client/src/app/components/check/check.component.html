@@ -18,10 +18,10 @@
   <img #uploaded src="{{imageUrl.url}}" id="uploaded-image">
 </div>
 
-<h2 id="watermarking-probability" *ngIf="similarity != null">Watermarked with {{similarity}} % probability!</h2>
+<h2 id="watermarking-probability" *ngIf="similarity != null">Watermarked with {{similarity}}% probability!</h2>
 
 <div fxLayoutAlign="center center">
-  <button mat-stroked-button color="accent" id="verify-button" [disabled]="imageUrl == null"
+  <button mat-stroked-button color="accent" id="verify-button" [disabled]="imageUrl == null || verifyingInProgress"
           type="button" (click)="verifyImage()" *ngIf="similarity == null">Verify image
   </button>
 </div>
