@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "watermark-client"
+  "defaultProject": "watermark-client",
+  "cli": {
+    "analytics": "b65abb5a-fd27-463c-8a13-5a80217e8f52"
+  }
 }

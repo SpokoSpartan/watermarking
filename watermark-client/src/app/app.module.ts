@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /* Components */
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
+import { DisplayImagesComponent } from './components/display-image/display-image.component';
 
 /* Forms */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,6 +36,7 @@ import { CheckComponent } from './components/check/check.component';
     LogInComponent,
     RegisterComponent,
     UploadImageComponent,
+    DisplayImagesComponent,
     CheckComponent
   ],
   imports: [
