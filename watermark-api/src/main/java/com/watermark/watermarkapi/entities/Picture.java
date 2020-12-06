@@ -25,12 +25,23 @@ public class Picture {
     protected Picture() {
     }
 
+    public Picture(String pictureUrl, User user) {
+        this.pictureUrl = pictureUrl;
+        this.user_id = user;
+    }
+
     public Picture(String pictureUrl, String name, String watermarkUrl, String algorithm) {
         this.pictureUrl = pictureUrl;
         this.name = name;
         this.watermarkUrl = watermarkUrl;
         this.algorithm = algorithm;
     }
+
+    public User getUserId() {
+        return user_id;
+    }
+
+    public Integer getPictureId() { return picture_id; }
 
     public String getPictureUrl() {
         return pictureUrl;
@@ -40,9 +51,9 @@ public class Picture {
         return name;
     }
 
-    public String getWatermarkUrl() {
-        return watermarkUrl;
-    }
+    public String getWatermarkUrl() { return watermarkUrl; }
+
+    public void setWatermarkUrl(String algorithm) { this.algorithm = algorithm; }
 
     public String getAlgorithm() {
         return algorithm;

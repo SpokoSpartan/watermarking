@@ -29,6 +29,10 @@ public class User {
         this.email = email;
     }
 
+    public Integer getId() {
+        return user_id;
+    }
+
     public String getName() {
         return name;
     }
