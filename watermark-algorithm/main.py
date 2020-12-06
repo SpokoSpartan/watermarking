@@ -1,4 +1,4 @@
-from global_methods import print_plot, wait_for_key, TESTING_ALGORITHM
+from global_methods import print_plot, TESTING_ALGORITHM, wait_for_key
 
 
 def get_watermark_level(image):
@@ -11,14 +11,12 @@ def get_watermark_level(image):
     return lsbmr_watermark_level
 
 
+
 def add_watermark(watermark_method, image):
     if watermark_method == 'DCT':
         from dct_watermark import embed, is_watermarked, __extract
         watermarked_image = embed(image)
-
-        # when not testing return watermarked image
         if TESTING_ALGORITHM == 0:
-            print(get_watermark_level(watermarked_image))
             return watermarked_image
 
         print_plot("Watermarked image", watermarked_image / 255)
@@ -28,13 +26,11 @@ def add_watermark(watermark_method, image):
         print('original image: ' + str(is_image_watermarked))
         extracted_watermark = __extract(watermarked_image)
         print_plot("Extracted watermark", extracted_watermark)
+
     elif watermark_method == 'LSBMR':
         from lsbmr_watermark import embed, is_watermarked, __extract
         watermarked_image = embed(image)
-
-        # when not testing return watermarked image
         if TESTING_ALGORITHM == 0:
-            print(get_watermark_level(watermarked_image))
             return watermarked_image
 
         print_plot("Watermarked image", watermarked_image / 255)
