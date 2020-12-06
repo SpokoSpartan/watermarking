@@ -1,4 +1,4 @@
-from global_methods import read_grey_image, find_shape_similarities, print_plot
+from global_methods import read_grey_image, find_shape_similarities
 from transformation_methods import resize_image, prepare_binary_image, copy_image, to_array
 
 channel = 2

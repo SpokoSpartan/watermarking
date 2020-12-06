@@ -4,11 +4,8 @@ import com.watermark.watermarkapi.domains.ImageUrl;
 import com.watermark.watermarkapi.domains.WatermarkUrl;
 import com.watermark.watermarkapi.services.ImageService;
 import com.watermark.watermarkapi.services.WatermarkService;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
@@ -29,9 +26,15 @@ public class ImageController {
 		return imageService.uploadImage(image);
 	}
 
+	@GetMapping(value = "/get", produces = MediaType.IMAGE_JPEG_VALUE)
+	public @ResponseBody
+	byte[] getImage(@RequestParam("name") String name) {
+		return imageService.getImage(name);
+	}
+
 	@PostMapping("/watermark")
 	public WatermarkUrl watermarkImage(@RequestParam("algorithm") String algorithm,
-								@RequestParam("imageId") Integer imageId) {
+									   @RequestParam("imageId") Integer imageId) {
 		return watermarkService.watermarkImage(imageId, algorithm);
 	}
 }
