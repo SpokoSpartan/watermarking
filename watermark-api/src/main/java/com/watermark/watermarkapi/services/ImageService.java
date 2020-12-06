@@ -51,6 +51,7 @@ public class ImageService {
 
 		User user = userService.getLoggedInUser();
 		Picture picture = new Picture(url, user);
+		picture.setName(image.getOriginalFilename());
 		pictureRepository.saveAndFlush(picture);
 		Picture pictureFromDB = pictureRepository.findByPictureUrl(url);
 

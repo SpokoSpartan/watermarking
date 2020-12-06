@@ -16,12 +16,17 @@ import java.net.URISyntaxException;
 @Service
 public class AlgorithmCommunicationClientService {
 
+    private final RestTemplate restTemplate;
 
-    String algorithmUrl = "http://127.0.0.1:5000/algorithm";
+    private static String algorithmUrl = "http://127.0.0.1:5000/algorithm";
+
+    public AlgorithmCommunicationClientService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @ApiOperation("postForEntity jsonBody")
     @ResponseBody
-    public String getWatermarkedImage(String url, String algorithmType) throws URISyntaxException  {
+    public String getWatermarkedImage(String url, String algorithmType) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -32,16 +37,9 @@ public class AlgorithmCommunicationClientService {
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
-        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(algorithmUrl, request, String.class );
 
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity( algorithmUrl, request, String.class );
-
-        //System.out.println("Status Code: " + responseEntity.getStatusCode());
-        //System.out.println("Body: " + responseEntity.getBody().toString());
-        //System.out.println("Location: " + responseEntity.getHeaders().getLocation());
-
-        return responseEntity.toString();
-
+        return responseEntity.getBody();
     }
 
 }

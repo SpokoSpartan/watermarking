@@ -53,7 +53,11 @@ public class Picture {
 
     public String getWatermarkUrl() { return watermarkUrl; }
 
-    public void setWatermarkUrl(String algorithm) { this.algorithm = algorithm; }
+    public void setWatermarkUrl(String watermarkUrl) { this.watermarkUrl = watermarkUrl; }
+
+    public void setAlgorithm(String algorithm) { this.algorithm = algorithm; }
+
+    public void setName(String name) { this.name = name; }
 
     public String getAlgorithm() {
         return algorithm;
@@ -68,4 +72,5 @@ public class Picture {
                 "Picture[pictureUrl='%s', name='%s', watermarkUrl='%s', algorithm='%s']", pictureUrl,
                 name, watermarkUrl, algorithm);
     }
+
 }

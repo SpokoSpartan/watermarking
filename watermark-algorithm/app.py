@@ -15,9 +15,7 @@ def algorithm():
     filename, image = get_image(url)
     watermarked_image = add_watermark(alg, image)
     image_url = upload_image(watermarked_image, filename)
-    response = jsonify(image_url)
-    response.status_code = 200
-    return response
+    return image_url
 
 
 @app.route("/watermark-level", methods=["POST"])
