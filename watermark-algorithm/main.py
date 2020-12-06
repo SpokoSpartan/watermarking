@@ -2,7 +2,7 @@ from global_methods import prepare_window, read_image, print_plot, wait_for_key
 
 
 #image = read_image("images/image.jpg")
-# watermark_method = 'DCT'
+#watermark_method = 'DCT'
 #watermark_method = 'LSBMR'
 
 def _main(_watermark_method, _image):
@@ -23,6 +23,7 @@ def _main(_watermark_method, _image):
         print('original image: ' + str(is_image_watermarked))
         # extracted_watermark = __extract(watermarked_image)
         # print_plot("Extracted watermark", extracted_watermark)
+
     elif watermark_method == 'LSBMR':
         from lsbmr_watermark import embed, is_watermarked, __extract
         watermarked_image = embed(image)
@@ -34,4 +35,3 @@ def _main(_watermark_method, _image):
         # extracted_watermark = __extract(watermarked_image)
         # print_plot("Extracted watermark", extracted_watermark)
 
-    wait_for_key()

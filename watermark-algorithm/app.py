@@ -8,18 +8,22 @@ from download_image import get_image
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-#url = https://res.cloudinary.com/demo/image/upload/sample.jpg?fbclid=IwAR0mghGsRqq_Bh2Dk-BmSxuZIGiu1NHfvuvfgADbYBxTZjfO8woMkHnr_EM
 
 @app.route("/algorithm", methods=["POST"])
 def algorithm():
-    alg = request.args.get("algorithm")
-    url = request.args.get("url")
+
+    jsonResponse = request.json
+    for key, value in jsonResponse.items():
+        print(key, value[0])
+        if (key =='algorithm'): alg = value[0]
+        if (key == 'url'): url = value[0]
+
     img = get_image(url)
-    print(img)
-    #print_plot("Image", img)
-    response = jsonify(url)
-    response.status_code = 202  # Provides a response status code of 202 which is "Accepted"
+
     watermarked_image = _main(alg, img)
+
+    response = jsonify("WatermarkedImg : " + url)
+    response.status_code = 202  # Provides a response status code of 202 which is "Accepted"
 
     return response;
 

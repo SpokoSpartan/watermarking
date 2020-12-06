@@ -5,6 +5,7 @@ import cv2
 def get_image(url):
     image_url = url
     #image_url = "https://res.cloudinary.com/demo/image/upload/sample.jpg"
+    print(url)
     filename = image_url.split("/")[-1]
     print(filename)
     r = requests.get(image_url, stream=True)
