@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'login', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'display', component: DisplayImagesComponent },
+  { path: 'display', component: DisplayImagesComponent, canActivate: [AuthenticatedGuard] },
   { path: 'watermark', component: UploadImageComponent, canActivate: [AuthenticatedGuard]},
   { path: 'verify', component: CheckComponent, canActivate: [AuthenticatedGuard]}
 ];

@@ -36,7 +36,7 @@ export class LogInComponent implements OnInit {
       () => {
         console.log('Success!');
         this.router.navigateByUrl('watermark');
-      },
+     },
       (error) => {
         console.log(error.status);
         this.loginFailed = true;
