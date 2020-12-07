@@ -36,8 +36,6 @@ export class DisplayImagesComponent implements OnInit {
 
   this.getWatermarkedImageUrl();
 
-  //console.log(this.watermarkedUrl);
-
   }
 
   ngOnInit(): void {
