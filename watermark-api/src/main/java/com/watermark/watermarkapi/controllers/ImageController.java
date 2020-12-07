@@ -1,7 +1,9 @@
 package com.watermark.watermarkapi.controllers;
 
 import com.watermark.watermarkapi.domains.ImageUrl;
+import com.watermark.watermarkapi.domains.PictureResponse;
 import com.watermark.watermarkapi.domains.WatermarkUrl;
+import com.watermark.watermarkapi.entities.Picture;
 import com.watermark.watermarkapi.services.ImageService;
 import com.watermark.watermarkapi.services.WatermarkService;
 import org.springframework.http.MediaType;
@@ -19,6 +21,11 @@ public class ImageController {
 
 		this.imageService = imageService;
 		this.watermarkService = watermarkService;
+	}
+
+	@GetMapping("/get-picture/{id}")
+	public PictureResponse getPicture(@PathVariable Integer id) {
+		return imageService.getPicture(id);
 	}
 
 	@PostMapping("/upload")
