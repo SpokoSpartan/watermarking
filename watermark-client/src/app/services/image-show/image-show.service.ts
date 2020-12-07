@@ -8,6 +8,7 @@ import { PictureResponse } from 'src/app/domains/PictureResponse';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ImageShowService {
 
   private imageUrl = apiUrl + 'image/';
@@ -21,7 +22,7 @@ export class ImageShowService {
    //get Watermarked Url from Id
    public getWatermarkUrlFromId(imageId: string): Observable<PictureResponse> {
     
-    return this.httpClient.get<PictureResponse>(this.imageUrl + "get-picture/" +imageId);
+    return this.httpClient.get<PictureResponse>(this.imageUrl + "get-picture/" +imageId, {withCredentials: true});
     
   }
 
