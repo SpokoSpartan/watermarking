@@ -1,6 +1,7 @@
 package com.watermark.watermarkapi.services;
 
 import com.watermark.watermarkapi.domains.ImageUrl;
+import com.watermark.watermarkapi.domains.PictureResponse;
 import com.watermark.watermarkapi.entities.Picture;
 import com.watermark.watermarkapi.entities.User;
 import com.watermark.watermarkapi.exceptions.ValidationException;
@@ -113,4 +114,12 @@ public class ImageService {
 		return bos.toByteArray();
 	}
 
+	public PictureResponse getPicture(Integer id) {
+		Picture picture = pictureRepository.findByPictureId(id);
+		PictureResponse response = new PictureResponse();
+		response.setPictureId(picture.getPictureId());
+		response.setUrl(picture.getPictureUrl());
+		response.setWatermarkedUrl(picture.getWatermarkUrl());
+		return response;
+	}
 }
