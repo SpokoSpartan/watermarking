@@ -1,8 +1,8 @@
 export class PictureResponse {
 
-    private url: string;
-    private watermarkedUrl: string;
-    private pictureId: number;
+    public url: string;
+    public watermarkedUrl: string;
+    public pictureId: number;
 
     constructor(url: string, pictureId: number, watermarkedUrl: string) {
         this.url = url;

@@ -70,7 +70,7 @@ createImageFromBlob(image: Blob) {
     this.isImageLoading = true;
     this.imageShowService.getWatermarkUrlFromId(this.imageId).subscribe(watermarkImageUrlTmp => {
       this.pictureResponse = watermarkImageUrlTmp;
-      this.watermarkedImgUrl =this.pictureResponse.getWatermarkedUrl();
+      this.watermarkedImgUrl =this.pictureResponse.watermarkedUrl;
       console.log(this.watermarkedImgUrl);
 
     });
