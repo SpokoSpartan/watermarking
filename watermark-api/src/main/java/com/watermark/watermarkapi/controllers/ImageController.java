@@ -37,4 +37,11 @@ public class ImageController {
 									   @RequestParam("imageId") Integer imageId) {
 		return watermarkService.watermarkImage(imageId, algorithm);
 	}
+
+	@GetMapping("/watermark/{algorithm}/{imageId}")
+	@ResponseBody
+	public WatermarkUrl watermarkImageById(@PathVariable String algorithm,
+									   @PathVariable Integer imageId) {
+		return watermarkService.watermarkImage(imageId, algorithm);
+	}
 }
