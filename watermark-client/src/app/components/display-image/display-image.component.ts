@@ -20,24 +20,22 @@ export class DisplayImagesComponent implements OnInit {
   // imgUrl: string = 'https://picsum.photos/200/300/?random';
    imgUrl: string;
    watermarkedImgUrl: string;
- 
+   imageId: string;
 
   constructor(private imageShowService: ImageShowService,  private route: ActivatedRoute, private router: Router) {
-  
-   this.route.paramMap
-    .subscribe(params => {
-      this.imgUrl = params.get('imgUrl');
-      this.watermarkedImgUrl = params.get('watermarkImageUrl');
-      console.log(this.imgUrl);
-    }
+
+    this.imgUrl = this.route.snapshot.paramMap.get('imgUrl');
+    this.imageId = this.route.snapshot.paramMap.get('imageId');
+    console.log(this.imgUrl);
+    console.log(this.imageId);
     
-  );
+  
 
   this.getImageFromService();
   }
 
   ngOnInit(): void {
-   // throw new Error('Method not implemented.');
+   throw new Error('Method not implemented.');
   }
 
 

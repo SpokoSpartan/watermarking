@@ -68,13 +68,7 @@ export class UploadImageComponent implements OnInit {
                 const watermarkUrl = watermarkImageUrl.url;
                 console.log(watermarkImageUrl);
                 this.fileUploaded = false;
-                //console.log(this.imageUrl);
-                const imgUrl = this.imageUrl.url;
-
-                console.log("1" + imgUrl);
-                console.log("2" + watermarkUrl);
-                this.router.navigate(['/display', {imgUrl:this.imageUrl.url, watermarkImage: watermarkImageUrl.url }]);
-                //console.log("watermark" +  watermarkImageUrl.);
+                this.router.navigate(['/display', {imgUrl:this.imageUrl.url, imageId: this.imageUrl.pictureId }]);
             },
             (error) => console.log(error),
             () => {
