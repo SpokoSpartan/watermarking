@@ -31,7 +31,7 @@ export class DisplayImagesComponent implements OnInit {
     this.imageId = this.route.snapshot.paramMap.get('imageId');
     console.log(this.imgUrl);
     console.log(this.imageId);
-    
+
   this.getImageFromService();
 
   this.getWatermarkedImageUrl();
@@ -43,7 +43,7 @@ export class DisplayImagesComponent implements OnInit {
   }
 
 
-  
+
 createImageFromBlob(image: Blob) {
    let reader = new FileReader();
    reader.addEventListener("load", () => {
@@ -70,7 +70,7 @@ createImageFromBlob(image: Blob) {
     this.isImageLoading = true;
     this.imageShowService.getWatermarkUrlFromId(this.imageId).subscribe(watermarkImageUrlTmp => {
       this.pictureResponse = watermarkImageUrlTmp;
-      this.watermarkedImgUrl =this.pictureResponse.getWatermarkedUrl();
+      this.watermarkedImgUrl =this.pictureResponse.watermarkedUrl;
       console.log(this.watermarkedImgUrl);
 
     });
