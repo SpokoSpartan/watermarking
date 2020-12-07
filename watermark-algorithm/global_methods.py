@@ -4,6 +4,7 @@ import numpy as np
 from transformation_methods import resize_image
 
 TESTING_ALGORITHM = 0
+SAVE_DIRECTORY = '/tmp/'
 
 
 def read_image(name):

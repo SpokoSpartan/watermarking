@@ -2,16 +2,16 @@ package com.watermark.watermarkapi.domains;
 
 public class WatermarkUrl {
 
-    private final String url;
     private final String algorithm;
+    private final Integer imageId;
 
-    public WatermarkUrl(String url, String algorithm) {
-        this.url = url;
+    public WatermarkUrl(Integer imageId, String algorithm) {
+        this.imageId = imageId;
         this.algorithm = algorithm;
     }
 
-    public String getUrl() {
-        return url;
+    public Integer getImageId() {
+        return imageId;
     }
 
     public String getAlgorithm() {

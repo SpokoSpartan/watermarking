@@ -1,4 +1,4 @@
-from global_methods import read_image, TESTING_ALGORITHM
+from global_methods import read_image
 from main import add_watermark
 
 watermark_method = 'DCT'

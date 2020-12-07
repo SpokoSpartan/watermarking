@@ -14,6 +14,7 @@ export class CheckComponent implements OnInit {
   fileUploaded = false;
   imageUrl: ImageUrl;
   similarity: number = null;
+  verifyingInProgress = false;
 
   @ViewChild('uploaded')
   picture: ElementRef;
@@ -52,6 +53,7 @@ export class CheckComponent implements OnInit {
   }
 
   public verifyImage(): void {
+    this.verifyingInProgress = true;
     this.imageService.verifyImage(this.imageUrl.url).subscribe(
       (similarity) => {
         this.similarity = similarity;
@@ -62,7 +64,8 @@ export class CheckComponent implements OnInit {
           element.style.border = '3px solid red';
         }
       },
-      (error) => console.log(error));
+      (error) => console.log(error),
+      () => this.verifyingInProgress = false);
   }
 
 }

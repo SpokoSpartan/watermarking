@@ -54,11 +54,13 @@ This section contains information needed to run application as a developer.
   * run ```test.py```
 * when running http application:
   * change TESTING_ALGORITHM to 0 (```global_methods.py```)
+  * set up SAVE_DIRECTORY to directory that contains the uploaded files
   * run ```app.py```
 
 #### Backend app
 * install [JDK](https://jdk.java.net/archive/) version 11 or higher
 * install [Maven](https://www.javahelps.com/2017/10/install-apache-maven-on-linux.html)
+* in application.properties decide where to save uploaded images: ```file-repository.save-directory```
 * run the database: ```docker run --name postgres-mmvc -p 5432:5432 -e POSTGRES_PASSWORD=Multimedia2020! -e POSTGRES_DB=spring-test -d postgres```
 * move to the watermark-api directory: ```cd watermark-api```
 * compile application: ```mvn clean install```

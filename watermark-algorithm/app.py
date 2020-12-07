@@ -8,14 +8,14 @@ app.config["DEBUG"] = True
 
 @app.route("/algorithm", methods=["POST"])
 def algorithm():
-    alg = request.args.get("algorithm")
-    url = request.args.get("url")
+    json_response = request.json
+    for key, value in json_response.items():
+        if key == 'algorithm': alg = value[0]
+        if key == 'url': url = value[0]
     filename, image = get_image(url)
     watermarked_image = add_watermark(alg, image)
     image_url = upload_image(watermarked_image, filename)
-    response = jsonify(image_url)
-    response.status_code = 200  # Provides a response status code of 200 which is "Ok"
-    return response
+    return image_url
 
 
 @app.route("/watermark-level", methods=["POST"])
