@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import {apiUrl} from '../../config';
 import {WatermarkUrl} from '../../domains/WatermarkUrl';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { PictureResponse } from 'src/app/domains/PictureResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,9 @@ export class ImageShowService {
   }
 
    //get Watermarked Url from Id
-   public getWatermarkUrlFromId(algorithm: string, imageId: string): Observable<WatermarkUrl> {
+   public getWatermarkUrlFromId(imageId: string): Observable<PictureResponse> {
     
-    return this.httpClient.get<WatermarkUrl>(this.imageUrl + 'watermark/'+algorithm+"/"+imageId);
+    return this.httpClient.get<PictureResponse>(this.imageUrl + "get-picture/" +imageId);
     
   }
 

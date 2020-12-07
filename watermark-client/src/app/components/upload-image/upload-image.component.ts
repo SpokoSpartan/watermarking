@@ -63,13 +63,13 @@ export class UploadImageComponent implements OnInit {
             imageId: this.imageUrl.pictureId
         };
 
+        console.log("BEFORE" + this.imageUrl.url);
+
         this.imageService.watermarkImage(this.watermarkData).subscribe(
             (watermarkImageUrl) => {
-                const watermarkUrl = watermarkImageUrl.url;
-                console.log(watermarkImageUrl);
-                console.log(this.choseAlgorithm);
+                console.log("In SERVICE" + this.imageUrl.url);
                 this.fileUploaded = false;
-                this.router.navigate(['/display', {imgUrl:this.imageUrl.url, imageId: this.imageUrl.pictureId, algorithm: this.choseAlgorithm}]);
+                this.router.navigate(['/display', {imgUrl :this.imageUrl.url, imageId: this.imageUrl.pictureId}]);
             },
             (error) => console.log(error),
             () => {
