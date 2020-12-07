@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageShowService } from 'src/app/services/image-show/image-show.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { PictureResponse } from 'src/app/domains/PictureResponse';
 
 
 @Component({
@@ -17,10 +18,12 @@ export class DisplayImagesComponent implements OnInit {
 
   isImageLoading: boolean;
 
-  // imgUrl: string = 'https://picsum.photos/200/300/?random';
+   //imgUrl: string = 'https://picsum.photos/200/300/?random';
    imgUrl: string;
    watermarkedImgUrl: string;
    imageId: string;
+   pictureResponse: PictureResponse;
+
 
   constructor(private imageShowService: ImageShowService,  private route: ActivatedRoute, private router: Router) {
 
@@ -29,9 +32,12 @@ export class DisplayImagesComponent implements OnInit {
     console.log(this.imgUrl);
     console.log(this.imageId);
     
-  
-
   this.getImageFromService();
+
+  this.getWatermarkedImageUrl();
+
+  //console.log(this.watermarkedUrl);
+
   }
 
   ngOnInit(): void {
@@ -60,5 +66,16 @@ createImageFromBlob(image: Blob) {
         this.isImageLoading = false;
         console.log(error);
       });
+  }
+
+  getWatermarkedImageUrl() {
+    this.isImageLoading = true;
+    this.imageShowService.getWatermarkUrlFromId(this.imageId).subscribe(watermarkImageUrlTmp => {
+      this.pictureResponse = watermarkImageUrlTmp;
+      this.watermarkedImgUrl =this.pictureResponse.getWatermarkedUrl();
+      console.log(this.watermarkedImgUrl);
+
+    });
+
   }
 }
