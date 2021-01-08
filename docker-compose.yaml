@@ -1,0 +1,23 @@
+version: '3'
+services:
+  watermark-postgres:
+    image: postgres:latest
+    network_mode: host
+    env_file:
+      - database.env
+  watermark-algorithm:
+    image: pwrproject/watermark-algorithm:latest
+    network_mode: host
+  watermark-api:
+    image: pwrproject/watermark-api:latest
+    depends_on:
+      - watermark-postgres
+      - watermark-algorithm
+    network_mode: host
+  watermark-client:
+    image: pwrproject/watermark-client:latest
+    network_mode: host
+    depends_on:
+      - watermark-postgres
+      - watermark-algorithm
+      - watermark-api
