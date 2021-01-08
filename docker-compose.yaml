@@ -8,11 +8,15 @@ services:
   watermark-algorithm:
     image: pwrproject/watermark-algorithm:latest
     network_mode: host
+    volumes:
+    - /tmp/images:/tmp
   watermark-api:
     image: pwrproject/watermark-api:latest
     depends_on:
       - watermark-postgres
       - watermark-algorithm
+    volumes:
+      - /tmp/images:/tmp
     network_mode: host
   watermark-client:
     image: pwrproject/watermark-client:latest
